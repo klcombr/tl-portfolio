@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thiago Leandro - Melhor Opção</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand">
+          <img src="img/logo.png" alt="Logo" class="logo">
+          <div class="name-block">
+            <h1 class="name">Thiago Leandro</h1>
+            <p class="role">Serralheria • Especialista</p>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#hero" class="nav-link"><i class="fas fa-home"></i> Início</a>
+          <a href="#about" class="nav-link"><i class="fas fa-user"></i> Sobre</a>
+          <a href="#services" class="nav-link"><i class="fas fa-cogs"></i> Serviços</a>
+          <a href="#portfolio" class="nav-link"><i class="fas fa-images"></i> Portfólio</a>
+          <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contato</a>
+        </nav>
+        <div class="header-right">
+          <div class="header-links">
+            <a href="tel:+5513991721658" title="Telefone"><i class="fas fa-phone"></i></a>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section id="hero" class="hero">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <h2 class="eyebrow">Olá, eu sou o Thiago</h2>
+            <h1 class="hero-title">
+              Especialista em serralheria e vidraçaria.
+            </h1>
+            <p class="hero-sub">
+              Especialista em <strong>serralheria</strong> e
+              <strong>vidraçaria</strong>. Instalações, reparos e manutenção com
+              garantia.
+            </p>
+            <div class="hero-ctas">
+              <a class="cta" href="#portfolio">Ver Trabalhos</a>
+              <button
+                class="ghost"
+                onclick="document.getElementById('contato').scrollIntoView()"
+              >
+                Falar Comigo
+              </button>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="thiago.jpg" alt="Thiago Leandro" class="profile-image" />
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-content">
+          <h3 class="section-title">Sobre Mim</h3>
+          <p class="section-text">
+            Com mais de 20 anos de experiência, sou especialista em serralheria
+            e vidraçaria, oferecendo serviços de instalação, reparo e manutenção
+            de fechaduras, portões, grades e vidros. Comprometido com a
+            qualidade e satisfação dos meus clientes.
+          </p>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <h3 class="section-title">Especialidades</h3>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-door-open"></i></div>
+            <h4>Portas</h4>
+            <p>Instalação e reparo de portas residenciais e comerciais.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-archway"></i></div>
+            <h4>Portões</h4>
+            <p>Manutenção e instalação de portões automáticos e manuais.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-window-maximize"></i></div>
+            <h4>Janelas</h4>
+            <p>Instalação e reparo de janelas e esquadrias.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-umbrella-beach"></i></div>
+            <h4>Toldos</h4>
+            <p>Fabricação e instalação de toldos personalizados.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-wrench"></i></div>
+            <h4>Manutenções</h4>
+            <p>Serviços de manutenção preventiva e corretiva.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section">
+        <h3 class="section-title">Portfólio</h3>
+        <div class="slideshow-container">
+          <div class="slideshow">
+            <div class="slide active">
+              <img src="portimages/Screenshot_2026-01-05_22-55-34.png" alt="Instalação de Portas" />
+              <div class="slide-caption">
+                <h3>Instalação de Portas</h3>
+                <p>Instalação profissional de portas residenciais com acabamento perfeito e garantia de qualidade.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="portimages/Screenshot_2026-01-05_22-56-20.png" alt="Manutenção de Portões" />
+              <div class="slide-caption">
+                <h3>Manutenção de Portões</h3>
+                <p>Serviço completo de manutenção e reparo de portões automáticos e manuais.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="portimages/Screenshot_2026-01-05_22-57-00.png" alt="Reparo de Janelas" />
+              <div class="slide-caption">
+                <h3>Reparo e fabricação de Janelas</h3>
+                <p>Reparo e substituição de vidros, esquadrias e componentes de janelas, além da fabricação das mesmas.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="portimages/Screenshot_2026-01-05_22-56-10.png" alt="Fabricação de Toldos" />
+              <div class="slide-caption">
+                <h3>Fabricação de Toldos</h3>
+                <p>Fabricação e instalação personalizada de toldos para proteção solar.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="portimages/Screenshot_2026-01-05_22-56-26.png" alt="Manutenção Preventiva" />
+              <div class="slide-caption">
+                <h3>Manutenção Preventiva</h3>
+                <p>Inspeções regulares e manutenção preventiva para evitar problemas futuros.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="portimages/Screenshot_2026-01-05_22-56-32.png" alt="Reparos de Emergência" />
+              <div class="slide-caption">
+                <h3>Fabricação de Compartimentos</h3>
+                <p>Fabricação personalizada de compartimentos e divisórias sob medida.</p>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="portimages/Screenshot_2026-01-05_22-56-40.png" alt="Instalação de Grades" />
+              <div class="slide-caption">
+                <h3>Instalação de Grades</h3>
+                <p>Instalação profissional de grades de proteção para janelas e portas.</p>
+              </div>
+            </div>
+          </div>
+          <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+          <button class="next" onclick="changeSlide(1)">&#10095;</button>
+          <div class="dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+            <span class="dot" onclick="currentSlide(9)"></span>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <h3 class="section-title">Especialidades Técnicas</h3>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <span class="skill-icon"><i class="fas fa-door-open"></i></span>
+            <p>Instalação de Portas</p>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon"><i class="fas fa-archway"></i></span>
+            <p>Manutenção de Portões</p>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon"><i class="fas fa-window-maximize"></i></span>
+            <p>Reparo de Janelas</p>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon"><i class="fas fa-umbrella-beach"></i></span>
+            <p>Fabricação de Toldos</p>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon"><i class="fas fa-tools"></i></span>
+            <p>Manutenção Preventiva</p>
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon"><i class="fas fa-wrench"></i></span>
+            <p>Reparos Corretivos</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="contact-container">
+          <h3 class="section-title">Vamos conversar?</h3>
+          <div class="contact-grid">
+            <a
+              class="contact-btn"
+              href="tel:+5513991721658"
+              aria-label="Telefone"
+              title="Telefone"
+            >
+              <i class="fas fa-phone"></i>
+            </a>
+            <a
+              class="contact-btn"
+              href="https://wa.me/5513991721658"
+              target="_blank"
+              aria-label="WhatsApp"
+              title="WhatsApp"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a
+              class="contact-btn"
+              href="https://www.tiktok.com/@tleandro"
+              target="_blank"
+              aria-label="TikTok"
+              title="TikTok"
+            >
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>
+          &copy; 2026 Thiago Leandro - Melhor Opção. Todos os direitos
+          reservados.
+        </p>
+        <p>
+          Desenvolvido por
+          <a href="https://github.com/kmdev-cmd" target="_blank">KmDev</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
