@@ -134,6 +134,53 @@ setInterval(() => {
     changeSlide(1);
 }, 5000); // Change slide every 5 seconds
 
+// Back to top button
+const backToTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const nav = document.querySelector('.nav');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+    });
+});
+
+// Contact form handling
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Here you would typically send the form data to a server
+        // For now, we'll just show a success message
+        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+        contactForm.reset();
+    });
+}
+
 // Add loading animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');

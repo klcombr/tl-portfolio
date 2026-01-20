@@ -3,7 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thiago Leandro - Melhor Opção</title>
+    <title>Thiago Leandro - Serralheria e Vidraçaria | Melhor Opção</title>
+    <meta name="description" content="Especialista em serralheria e vidraçaria com mais de 20 anos de experiência. Instalações, reparos e manutenção de portas, portões, janelas e grades. Atendimento profissional e garantido." />
+    <meta name="keywords" content="serralheria, vidraçaria, portas, portões, janelas, grades, manutenção, reparos, instalação, Thiago Leandro" />
+    <meta name="author" content="Thiago Leandro" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Thiago Leandro - Serralheria e Vidraçaria" />
+    <meta property="og:description" content="Especialista em serralheria e vidraçaria com mais de 20 anos de experiência. Instalações, reparos e manutenção de portas, portões, janelas e grades." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://thiago-leandro.com" />
+    <meta property="og:image" content="img/logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thiago Leandro - Serralheria e Vidraçaria" />
+    <meta name="twitter:description" content="Especialista em serralheria e vidraçaria com mais de 20 anos de experiência." />
+    <link rel="canonical" href="https://thiago-leandro.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -27,8 +40,14 @@
           <a href="#about" class="nav-link"><i class="fas fa-user"></i> Sobre</a>
           <a href="#services" class="nav-link"><i class="fas fa-cogs"></i> Serviços</a>
           <a href="#portfolio" class="nav-link"><i class="fas fa-images"></i> Portfólio</a>
+          <a href="#testimonials" class="nav-link"><i class="fas fa-star"></i> Depoimentos</a>
           <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contato</a>
         </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
         <div class="header-right">
           <div class="header-links">
             <a href="tel:+5513991721658" title="Telefone"><i class="fas fa-phone"></i></a>
@@ -61,7 +80,7 @@
             </div>
           </div>
           <div class="hero-image">
-            <img src="thiago.jpg" alt="Thiago Leandro" class="profile-image" />
+            <img src="img/logo.png" alt="Thiago Leandro" class="profile-image" />
           </div>
         </div>
       </section>
@@ -173,8 +192,6 @@
             <span class="dot" onclick="currentSlide(5)"></span>
             <span class="dot" onclick="currentSlide(6)"></span>
             <span class="dot" onclick="currentSlide(7)"></span>
-            <span class="dot" onclick="currentSlide(8)"></span>
-            <span class="dot" onclick="currentSlide(9)"></span>
           </div>
         </div>
       </section>
@@ -209,9 +226,57 @@
         </div>
       </section>
 
+      <section id="testimonials" class="section">
+        <h3 class="section-title">Depoimentos</h3>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"Excelente trabalho! O Thiago instalou portas na minha casa com muita qualidade e pontualidade. Recomendo!"</p>
+            </div>
+            <div class="testimonial-author">
+              <strong>Maria Silva</strong>
+              <span>Cliente Residencial</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"Profissionalismo e qualidade nos serviços de manutenção de portões. Sempre atencioso e cumpre prazos."</p>
+            </div>
+            <div class="testimonial-author">
+              <strong>João Santos</strong>
+              <span>Cliente Empresarial</span>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <p>"Fez a instalação das janelas do meu escritório. Trabalho impecável e preço justo. Voltarei a contratar!"</p>
+            </div>
+            <div class="testimonial-author">
+              <strong>Ana Costa</strong>
+              <span>Cliente Residencial</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section">
         <div class="contact-container">
           <h3 class="section-title">Vamos conversar?</h3>
+          <form class="contact-form" action="#" method="post">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Seu Nome" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Seu Email" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" name="phone" placeholder="Seu Telefone">
+            </div>
+            <div class="form-group">
+              <textarea name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="cta">Enviar Mensagem</button>
+          </form>
           <div class="contact-grid">
             <a
               class="contact-btn"
@@ -256,5 +321,10 @@
         </p>
       </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" title="Voltar ao topo">
+      <i class="fas fa-arrow-up"></i>
+    </button>
   </body>
 </html>
