@@ -613,3 +613,24 @@ html {
         padding: 70px 20px;
     }
 }
+
+.footer {
+    margin-top: 80px;
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background: rgba(2, 6, 23, 0.9);
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+.footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    color: var(--highlight);
+}

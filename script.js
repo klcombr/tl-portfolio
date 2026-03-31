@@ -93,3 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "ArrowLeft") goToPrev();
   });
 });
+
+const form = document.getElementById("form");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const message = document.getElementById("message").value;
+
+  const text = `Olá, me chamo ${name}%0A📞 Telefone: ${phone}%0A📝 Mensagem: ${message}`;
+
+  const url = `https://wa.me/5513991721658?text=${text}`;
+
+  window.open(url, "_blank");
+});
