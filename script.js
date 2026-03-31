@@ -1,187 +1,95 @@
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+// script.js - Carousel com loop infinito + autoplay suave
 
-// Add scroll animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  const prevBtn = document.querySelector(".btn.prev");
+  const nextBtn = document.querySelector(".btn.next");
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-        }
-    });
-}, observerOptions);
+  if (!track || !prevBtn || !nextBtn) return;
 
-// Observe all sections
-document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
-});
+  let images = Array.from(track.children);
+  let isTransitioning = false;
 
-// Parallax effect for hero image
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroImage = document.querySelector('.profile-image');
-    if (heroImage) {
-        heroImage.style.transform = `translateY(${scrolled * 0.1}px)`;
-    }
-});
+  // Duplica as imagens no início e no final para criar o loop infinito
+  function duplicateImages() {
+    const firstClone = images.map((img) => img.cloneNode(true));
+    const lastClone = images.map((img) => img.cloneNode(true));
 
-// Typing effect for hero title
-const heroTitle = document.querySelector('.hero-title');
-if (heroTitle) {
-    const text = heroTitle.textContent;
-    heroTitle.textContent = '';
-    let i = 0;
-    const typeWriter = () => {
-        if (i < text.length) {
-            heroTitle.textContent += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        }
-    };
-    setTimeout(typeWriter, 1000);
-}
+    // Adiciona clones no final
+    firstClone.forEach((clone) => track.appendChild(clone));
 
-// Particle background effect
-const createParticles = () => {
-    const particlesContainer = document.createElement('div');
-    particlesContainer.className = 'particles';
-    document.body.appendChild(particlesContainer);
+    // Adiciona clones no início (reverso para ficar correto)
+    lastClone.reverse().forEach((clone) => track.prepend(clone));
+  }
 
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 20 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        particlesContainer.appendChild(particle);
-    }
-};
+  duplicateImages();
 
-createParticles();
+  // Atualiza a lista de imagens após duplicar
+  images = Array.from(track.children);
 
-// Slideshow functionality
-let slideIndex = 1;
-let isTransitioning = false;
+  const slideWidth = images[0].getBoundingClientRect().width + 25; // 25px = gap
+  let currentIndex = images.length / 3; // Começa depois dos clones iniciais
 
-// Initialize slideshow
-document.addEventListener('DOMContentLoaded', function() {
-    showSlides(slideIndex);
-});
+  // Posiciona no início real (depois dos clones)
+  track.style.transition = "none";
+  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 
-function changeSlide(n) {
+  // Função para ir para o próximo slide
+  function goToNext() {
     if (isTransitioning) return;
-    showSlides(slideIndex += n, n > 0 ? 'next' : 'prev');
-}
-
-function currentSlide(n) {
-    if (isTransitioning) return;
-    let direction = n > slideIndex ? 'next' : 'prev';
-    showSlides(slideIndex = n, direction);
-}
-
-function showSlides(n, direction = 'next') {
     isTransitioning = true;
-    let i;
-    let slides = document.getElementsByClassName("slide");
-    let dots = document.getElementsByClassName("dot");
 
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
+    currentIndex++;
+    track.style.transition = "transform 0.7s cubic-bezier(0.32, 0.72, 0, 1)";
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
 
-    // Reset all slides
-    for (i = 0; i < slides.length; i++) {
-        slides[i].classList.remove("active");
-        slides[i].style.transform = direction === 'next' ? "translateX(100%)" : "translateX(-100%)";
-        slides[i].style.zIndex = "1";
+  // Função para ir para o slide anterior
+  function goToPrev() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+
+    currentIndex--;
+    track.style.transition = "transform 0.7s cubic-bezier(0.32, 0.72, 0, 1)";
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  // Reset infinito quando chega no clone
+  track.addEventListener("transitionend", () => {
+    isTransitioning = false;
+
+    // Se chegou no final (clones do início)
+    if (currentIndex >= images.length - images.length / 3) {
+      currentIndex = images.length / 3;
+      track.style.transition = "none";
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     }
 
-    // Reset dots
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+    // Se chegou no começo (clones do final)
+    if (currentIndex < images.length / 3) {
+      currentIndex = images.length - images.length / 3 - 1;
+      track.style.transition = "none";
+      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     }
+  });
 
-    // Set current slide as active
-    slides[slideIndex-1].classList.add("active");
-    slides[slideIndex-1].style.transform = "translateX(0)";
-    slides[slideIndex-1].style.zIndex = "2";
+  // Botões
+  nextBtn.addEventListener("click", goToNext);
+  prevBtn.addEventListener("click", goToPrev);
 
-    // Update dots
-    dots[slideIndex-1].className += " active";
+  // Autoplay (muda a cada 4 segundos)
+  let autoplay = setInterval(goToNext, 4000);
 
-    // Allow next transition after animation completes
-    setTimeout(() => {
-        isTransitioning = false;
-    }, 600);
-}
+  // Pausa o autoplay quando o mouse estiver em cima
+  const carousel = document.querySelector(".carousel");
+  carousel.addEventListener("mouseenter", () => clearInterval(autoplay));
+  carousel.addEventListener("mouseleave", () => {
+    autoplay = setInterval(goToNext, 4000);
+  });
 
-// Auto slideshow
-setInterval(() => {
-    changeSlide(1);
-}, 5000); // Change slide every 5 seconds
-
-// Back to top button
-const backToTopBtn = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('show');
-    } else {
-        backToTopBtn.classList.remove('show');
-    }
-});
-
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Hamburger menu
-const hamburger = document.getElementById('hamburger');
-const nav = document.querySelector('.nav');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    nav.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        nav.classList.remove('active');
-    });
-});
-
-// Contact form handling
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Here you would typically send the form data to a server
-        // For now, we'll just show a success message
-        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-        contactForm.reset();
-    });
-}
-
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
+  // Suporte a teclado (setas esquerda/direita)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") goToNext();
+    if (e.key === "ArrowLeft") goToPrev();
+  });
 });
